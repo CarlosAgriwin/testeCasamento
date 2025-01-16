@@ -1,3 +1,4 @@
+<script src="https://apis.google.com/js/api.js"></script>
 <!DOCTYPE html>
 <html>
 <head>
@@ -83,12 +84,13 @@
         <div> ANDREZA & GABRIEL</div>
 	<div id="countdown" class="countdown"></div>
         <div id="celebration" class="celebration">É HOJE!</div>
-        <form id="uploadForm" class="form">
-            <label for="myFile">Compartilhe a sua foto espacial com  gente:</label><br>
-            <input type="file" name="myFile" id="myFile" /><br>
-            <input type="button" value="Upload" onclick="uploadFile()" />
-        </form>
-        <div id="output"></div>
+       <h1>Upload de Fotos para o Google Drive</h1>
+	  <button id="authorize">Autorizar Google Drive</button>
+	  <input type="file" id="fileInput" multiple accept="image/*">
+	  <button id="upload">Carregar Fotos</button>
+	  <p id="status"></p>
+	
+	  <script src="script.js"></script>
     </div>
 </body>
 </html>
