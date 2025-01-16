@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cronômetro e Upload</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background: url('https://scontent-gru1-2.xx.fbcdn.net/v/t39.30808-6/471279357_9687759771253576_568456394240780038_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=833d8c&_nc_ohc=p57LlkPCh9sQ7kNvgEx5LQR&_nc_zt=23&_nc_ht=scontent-gru1-2.xx&_nc_gid=AZGyNwYaVQtqUNCK-2jJgV0&oh=00_AYAjQVkx5ZtOvgTjIvEt0EnCncOvRvW4wDFsMbXxt8KMUQ&oe=678DFFAD') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+        }
+        .container {
+            margin-top: 50px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+        .countdown {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .celebration {
+            font-size: 3em;
+            color: #FFD700;
+            margin-bottom: 20px;
+            display: none;
+        }
+        .form {
+            margin-top: 20px;
+        }
+        .form input {
+            margin: 5px 0;
+        }
+    </style>
+    <script>
+        function startCountdown() {
+            const targetDate = new Date('2025-06-21T00:00:00');
+            const countdownElement = document.getElementById('countdown');
+            const celebrationElement = document.getElementById('celebration');
+
+            function updateCountdown() {
+                const now = new Date();
+                const timeDifference = targetDate - now;
+
+                if (timeDifference <= 0) {
+                    countdownElement.style.display = "none";
+                    celebrationElement.style.display = "block";
+                    clearInterval(interval);
+                    return;
+                }
+
+                const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+                countdownElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            }
+
+            const interval = setInterval(updateCountdown, 1000);
+            updateCountdown();
+        }
+
+        function uploadFile() {
+            const form = document.getElementById('uploadForm');
+            const data = new FormData(form);
+            google.script.run
+                .withSuccessHandler((msg) => {
+                    document.getElementById('output').innerHTML = msg;
+                })
+                .uploadFile(data);
+        }
+
+        document.addEventListener('DOMContentLoaded', startCountdown);
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div> ANDREZA & GABRIEL</div>
+	<div id="countdown" class="countdown"></div>
+        <div id="celebration" class="celebration">É HOJE!</div>
+        <form id="uploadForm" class="form">
+            <label for="myFile">Compartilhe a sua foto espacial com  gente:</label><br>
+            <input type="file" name="myFile" id="myFile" /><br>
+            <input type="button" value="Upload" onclick="uploadFile()" />
+        </form>
+        <div id="output"></div>
+    </div>
+</body>
+</html>
