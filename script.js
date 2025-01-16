@@ -1,14 +1,16 @@
 // Firebase Configuration (substitua pelos seus valores do Firebase Console)
 const firebaseConfig = {
-  apiKey: "SUA_API_KEY",
-  authDomain: "SEU_AUTH_DOMAIN",
-  projectId: "SEU_PROJECT_ID",
-  storageBucket: "SEU_STORAGE_BUCKET",
-  messagingSenderId: "SEU_MESSAGING_SENDER_ID",
-  appId: "SEU_APP_ID"
-};
+    apiKey: "AIzaSyDk9zO_ju6P6PnaeHTo2YjqU9MJpGPi5yc",
+    authDomain: "casamento-aeg.firebaseapp.com",
+    projectId: "casamento-aeg",
+    storageBucket: "casamento-aeg.firebasestorage.app",
+    messagingSenderId: "140134160698",
+    appId: "1:140134160698:web:19f7bddabd2e060c675803",
+    measurementId: "G-F0EKJQ56ZP"
+  };
 
 // Inicialize o Firebase
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-storage.js";
 
