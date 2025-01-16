@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload para Firebase Storage</title>
+</head>
+<body>
+  <h1>Upload de Fotos para Firebase Storage</h1>
+  <input type="file" id="fileInput" multiple accept="image/*">
+  <button id="upload">Carregar Fotos</button>
+  <div id="progress"></div>
+  <ul id="fileList"></ul>
+
+  <!-- Firebase App (CDN) -->
+  <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js"></script>
+  <!-- Firebase Storage -->
+  <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-storage.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
